@@ -79,6 +79,5 @@ function Home() {
     )
 }
 
-console.log(document.getElementById('app'))
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<Home />);
