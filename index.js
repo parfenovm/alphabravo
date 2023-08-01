@@ -1,8 +1,4 @@
-'use client'
-
-import { useEffect, useState } from "react";
-
-const PHONETIC_WORDS: { [key: string]: string } = {
+const PHONETIC_WORDS = {
     "A": "Alfa",
     "B": "Bravo",
     "C": "Charlie",
@@ -34,12 +30,7 @@ const PHONETIC_WORDS: { [key: string]: string } = {
     "Å": "Åse"
 };
 
-interface PhoneticSpelling {
-    word: string;
-    spelling: string;
-}
-
-const formatText = (text: string): PhoneticSpelling[] => {
+const formatText = (text) => {
     const words = text.split(' ');
     return words.map((word) => ({
         word,
@@ -47,11 +38,11 @@ const formatText = (text: string): PhoneticSpelling[] => {
     }));
 }
 
-export default function Home() {
-    const [text, setText] = useState('');
-    const [phoneticText, setPhoneticText] = useState<PhoneticSpelling[]>([]);
+function Home() {
+    const [text, setText] = React.useState('');
+    const [phoneticText, setPhoneticText] = React.useState([]);
 
-    const updateText = (text: string) => {
+    const updateText = (text) => {
         setText(text);
 
         if (!text.length && phoneticText.length) {
@@ -87,3 +78,7 @@ export default function Home() {
         </div>
     )
 }
+
+console.log(document.getElementById('app'))
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(<Home />);
